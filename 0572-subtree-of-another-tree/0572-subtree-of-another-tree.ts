@@ -11,14 +11,15 @@
  *     }
  * }
  */
+
 function isSameTree(s: TreeNode | null, t: TreeNode | null): boolean {
-    if (!s && !t) return true;
-    if (!s || !t) return false;
+    if(!t && !s) return true;
+    if(!t || !s) return false;
     return s.val === t.val && isSameTree(s.left, t.left) && isSameTree(s.right, t.right);
 }
 
 function isSubtree(root: TreeNode | null, subRoot: TreeNode | null): boolean {
-    if (root === null) return false;
-    if (isSameTree(root, subRoot)) return true;
-    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    if(!root) return false;
+    if(isSameTree(root, subRoot)) return true;
+    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
 }
