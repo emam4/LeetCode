@@ -19,16 +19,15 @@ const deapthFirstValues = (root) => {
 function maxDepth(root: TreeNode | null): number {
     if(!root) return 0;
     const queue = [root];
-    const results = [];
     let maxLength: number = 0;
     while(queue.length > 0) {
-        let length: number = queue.length;
-        for(let i: number = 0; i < length; i++) { 
+        const length = queue.length;
+        for(let i = 0; i < length; i++) {
             const current = queue.shift();
-            if(current.left !== null) queue.push(current.left);
-            if(current.right !== null) queue.push(current.right);
+            if(current.left) queue.push(current.left);
+            if(current.right) queue.push(current.right);
         }
-        maxLength++;
+        maxLength++
     }
     return maxLength;
 };
