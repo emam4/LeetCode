@@ -1,21 +1,20 @@
 function isAnagram(s: string, t: string): boolean {
-    if(s.length !== t.length) return false;
-    
-    let sObj = {};
-    let tObj = {};
-    for(let i: number = 0 ; i < s.length ; i++) {
-        if(!sObj[s[i]]) sObj[s[i]] = 1;
-        else sObj[s[i]]++;
+    if (s.length !== t.length) return false;
+    if (s === t) return true;
+
+    const sTable = {}
+    for (let i = 0; i < s.length; i++) {
+        if(sTable[s[i]]) sTable[s[i]]++
+        else sTable[s[i]] = 1
     }
-    
-    for(let i: number = 0 ; i < t.length ; i++) {
-        if(!tObj[t[i]]) tObj[t[i]] = 1;
-        else tObj[t[i]]++;
+
+
+    for (let i = 0; i < t.length; i++) {
+        if(sTable[t[i]]) sTable[t[i]]--
+        if(sTable[t[i]] === 0) delete sTable[t[i]]
     }
-    
-    for (let key in tObj) {
-        if(tObj[key] !== sObj[key]) return false;
-    }
-    
+
+    if(Object.keys(sTable).length) return false
     return true;
+
 };
