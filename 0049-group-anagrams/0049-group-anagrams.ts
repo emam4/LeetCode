@@ -1,5 +1,5 @@
 function groupAnagrams(strs: string[]): string[][] {
-    let map = {}
+    let map: Record<string: string[]> = {}
     for(let i = 0 ; i < strs.length ; i++) {
         const sortedStr = strs[i].split('').sort().join('')
         if(!map[sortedStr]) map[sortedStr] = []
