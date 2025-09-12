@@ -14,7 +14,6 @@ function topKFrequent(nums: number[], k: number): number[] {
         }
     })
 
-    console.log(arrCount)
 
     arrCount.sort((a, b) => b.count - a.count);
 
@@ -24,5 +23,6 @@ function topKFrequent(nums: number[], k: number): number[] {
         const ele = arrCount.shift()
         finalAns.push(Number(ele.value))
     }
+
     return finalAns
 };
